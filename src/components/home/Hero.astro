@@ -1,0 +1,454 @@
+---
+import MagneticButton from "../ui/MagneticButton.astro";
+---
+
+<section class="hero-section">
+  <!-- Full-bleed responsive background artwork banner layer (z-index: 0) -->
+  <div class="hero-bg-wrapper">
+    <!-- Only the first matching source is downloaded. Sideways phones and landscape tablets use the wide image. -->
+    <picture class="hero-bg-picture">
+      <source
+        media="(min-width: 1025px), (orientation: landscape)"
+        srcset="/images/hero/hero-desktop.webp"
+        type="image/webp"
+        width="1024"
+        height="426"
+      />
+      <source
+        media="(min-width: 641px)"
+        srcset="/images/hero/hero-tablet.webp"
+        type="image/webp"
+        width="768"
+        height="1024"
+      />
+      <img
+        src="/images/hero/hero-mobile.webp"
+        alt="A smiling child at a desk taking an online chess lesson with a coach on a laptop, with a chessboard and chess books nearby"
+        class="hero-bg-img"
+        width="460"
+        height="1024"
+        fetchpriority="high"
+        loading="eager"
+      />
+    </picture>
+    <!-- Very soft light fade behind the text only -->
+    <div class="hero-overlay"></div>
+  </div>
+
+  <div class="container hero-container">
+    <div class="hero-content">
+      <div class="hero-badge-wrapper">
+        <!-- Orange Crown Doodle above badge (Desktop only) -->
+        <svg
+          class="doodle-crown"
+          width="36"
+          height="28"
+          viewBox="0 0 36 28"
+          fill="none"
+          stroke="#d4621c"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="M4 22L2 8L10 14L18 4L26 14L34 8L32 22H4Z"></path>
+          <circle cx="18" cy="4" r="1.5" fill="#d4621c"></circle>
+        </svg>
+
+        <div class="hero-badge reveal-fade-up">
+          <svg
+            class="badge-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+            ></path>
+          </svg>
+          Bringing Love for Chess
+        </div>
+      </div>
+
+      <div class="title-wrapper">
+        <h1 class="hero-title reveal-fade-up">
+          <span class="title-dark">Online Chess Training</span>
+          <span class="title-orange">for Kids from Age 3+</span>
+        </h1>
+
+        <!-- Orange Lightbulb Doodle top-right of headline (Desktop only) -->
+        <svg
+          class="doodle-bulb"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="#d4621c"
+          stroke-width="2.2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M9 18h6M10 22h4M12 2a7 7 0 0 0-7 7c0 2.5 1.3 4.7 3.3 6C9 15.8 9 17 9 18h6c0-1 0-2.2.7-3 2-1.3 3.3-3.5 3.3-6a7 7 0 0 0-7-7z"
+          ></path>
+        </svg>
+
+        <!-- Hand-drawn orange underline under headline -->
+        <svg
+          class="headline-underline"
+          viewBox="0 0 250 20"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 14C50 4 150 4 247 14"
+            stroke="#d4621c"
+            stroke-width="4"
+            stroke-linecap="round"></path>
+        </svg>
+      </div>
+
+      <div class="hero-actions reveal-fade-up" style="transition-delay: 0.2s;">
+        <div class="cta-wrapper">
+          <a href="/appointment/" class="custom-hero-btn" data-magnetic>
+            <span class="btn-text">Join Free Session &rarr;</span>
+            <span class="btn-bg"></span>
+          </a>
+
+          <!-- Orange Heart Doodle near button (Desktop only) -->
+          <svg
+            class="doodle-heart"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#d4621c"
+            stroke-width="2.2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          >
+            <path
+              d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"
+            ></path>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* ---------- Phone (portrait, up to 640px): mobile image ---------- */
+  .hero-section {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    /* Height follows the image ratio (460x1024) but never exceeds one screen; reserved before the image loads */
+    min-height: min(calc(100vw * 1024 / 460), 100svh);
+    padding-top: clamp(120px, 18vh, 200px); /* Dynamic padding to prevent overlapping faces on short phones */
+    padding-bottom: 1.5rem;
+    overflow: hidden;
+    background-color: #fffcf9;
+  }
+
+  /* Full-bleed background image container layer */
+  .hero-bg-wrapper {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .hero-bg-picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .hero-bg-img {
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important; /* Scales evenly, never stretches */
+    object-position: center 65%; /* Phone crop trims mostly the empty wall, keeping face, laptop and books in view */
+  }
+
+  /* Soft light fade in the bright upper area, behind the text only */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      to bottom,
+      rgba(255, 252, 249, 0.6) 0%,
+      rgba(255, 252, 249, 0.35) 28%,
+      rgba(255, 252, 249, 0) 42%
+    );
+  }
+
+  /* Hero Content Container Layer */
+  .hero-container {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  /* Badge styling */
+  .hero-badge-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #f7dac4;
+    color: #a04910;
+    padding: 0.5rem 1.1rem;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: 0.9375rem;
+    margin: 0 auto 0.875rem;
+    box-shadow: 0 4px 10px rgba(160, 73, 16, 0.12);
+    border: 2px dashed rgba(160, 73, 16, 0.3);
+  }
+
+  .badge-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  /* Title styling */
+  .title-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(
+      1.75rem,
+      8.5vw,
+      2.25rem
+    ); /* Keeps the headline to 2 lines on phones */
+    line-height: 1.12;
+    margin-bottom: 1.25rem;
+    position: relative;
+    z-index: 2;
+    font-weight: 800;
+  }
+
+  .title-dark {
+    display: block;
+    color: var(--color-primary);
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  .title-orange {
+    display: block;
+    color: #d4621c;
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+  }
+
+  /* Hand-drawn Underline SVG */
+  .headline-underline {
+    width: 180px;
+    height: 16px;
+    display: block;
+    margin: -0.75rem auto 1.25rem;
+  }
+
+  /* Actions & Button */
+  .hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+
+  /* ---------- Tablet (portrait, 641px to 1024px): tablet image ---------- */
+  @media (min-width: 641px) and (max-width: 1024px) and (orientation: portrait) {
+    .hero-section {
+      min-height: min(calc(100vw * 1024 / 768), 100svh);
+      padding-top: 260px; /* Increased to push the content down for tablet */
+    }
+
+    .hero-bg-img {
+      object-position: center top; /* Any crop trims the table edge, never the face or laptop */
+    }
+
+    .hero-badge {
+      gap: 0.75rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title {
+      font-size: var(--font-size-h1);
+      margin-bottom: 1.5rem;
+    }
+
+    .headline-underline {
+      width: 220px;
+      margin: -1rem auto 1.5rem;
+    }
+  }
+
+  /* ---------- Laptop/desktop (above 1024px) and sideways screens: wide image ---------- */
+  @media (min-width: 1025px), (orientation: landscape) {
+    .hero-section {
+      align-items: center;
+      /* Matches the 1024x426 image ratio, so the whole scene (chessboard included) shows */
+      min-height: calc(100vw * 426 / 1024);
+      padding-top: 104px;
+      padding-bottom: 1.5rem;
+    }
+
+    .hero-bg-img {
+      object-position: center bottom;
+    }
+
+    .hero-overlay {
+      background: radial-gradient(
+        ellipse 32% 70% at 22% 55%,
+        rgba(255, 252, 249, 0.5) 0%,
+        rgba(255, 252, 249, 0.25) 55%,
+        rgba(255, 252, 249, 0) 100%
+      );
+    }
+
+    /* Text is placed by viewport width so it always ends before the child's head (~45% across) */
+    .hero-container {
+      max-width: none;
+      padding: 0 8vw;
+    }
+
+    .hero-content {
+      max-width: 36vw;
+      margin: 0;
+      text-align: left;
+    }
+
+    .hero-badge {
+      gap: 0.6rem;
+      padding: 0.6em 1.3em;
+      font-size: clamp(0.875rem, 1.1vw, 1.125rem);
+      margin: 0 0 clamp(0.75rem, 1.6vw, 1.5rem);
+      transform: rotate(-2deg);
+    }
+
+    .hero-title {
+      font-size: clamp(1.5rem, 3.2vw, var(--font-size-h1));
+      margin-bottom: clamp(1rem, 1.8vw, 2rem);
+    }
+
+    .title-dark,
+    .title-orange {
+      white-space: nowrap;
+    }
+
+    .headline-underline {
+      width: clamp(150px, 15vw, 260px);
+      margin: -0.9rem 0 clamp(1rem, 2vw, 2.5rem);
+    }
+
+    .hero-actions {
+      justify-content: flex-start;
+    }
+  }
+
+  .cta-wrapper {
+    position: relative;
+    display: inline-block;
+  }
+
+  .custom-hero-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 3rem;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 1.125rem;
+    color: var(--color-surface);
+    overflow: hidden;
+    z-index: 1;
+    cursor: pointer;
+    box-shadow: 0 10px 25px rgba(89, 34, 24, 0.25);
+    text-decoration: none;
+  }
+
+  .custom-hero-btn .btn-text {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s var(--ease-out);
+    display: inline-block;
+  }
+
+  .custom-hero-btn .btn-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background-color: var(--color-primary);
+    z-index: -1;
+    transition: transform 0.4s var(--ease-spring);
+  }
+
+  .custom-hero-btn:hover .btn-bg {
+    transform: scale(1.05);
+  }
+
+  /* Desktop Doodles (Crown, Lightbulb, Heart) */
+  .doodle-crown,
+  .doodle-bulb,
+  .doodle-heart {
+    display: none;
+    position: absolute;
+    pointer-events: none;
+    opacity: 0.9;
+    z-index: 4;
+  }
+
+  @media (min-width: 1025px) {
+    .doodle-crown {
+      display: block;
+      top: -24px;
+      left: 12px;
+      transform: rotate(-10deg);
+    }
+
+    .doodle-bulb {
+      display: block;
+      top: 10px;
+      right: 20px;
+      transform: rotate(12deg);
+    }
+
+    .doodle-heart {
+      display: block;
+      bottom: -15px;
+      right: -25px;
+      transform: rotate(15deg);
+    }
+  }
+</style>

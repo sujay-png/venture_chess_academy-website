@@ -1,0 +1,210 @@
+---
+import { services } from '../../data/services';
+import MagneticButton from '../ui/MagneticButton.astro';
+---
+
+<section class="section services-section">
+  <div class="container">
+    <div class="section-header reveal-fade-up">
+      <span class="subtitle">WHAT WE OFFER</span>
+      <h2 class="title">In every chess position,<br/>there are opportunities</h2>
+    </div>
+
+    <div class="services-list">
+      {services.map((service, index) => (
+        <div class="service-row reveal-fade-up" style={`transition-delay: ${index * 0.1}s;`}>
+          <div class="service-content">
+            <div class="service-number">0{index + 1}</div>
+            <div class="service-details">
+              <h3 class="service-title">{service.name}</h3>
+              <p class="service-desc">{service.description.split('\n')[0]}</p>
+            </div>
+          </div>
+          <div class="service-image-preview">
+            <img src={service.image} alt={service.name} />
+          </div>
+          <div class="service-action">
+            <MagneticButton href={`/chess-academy-karnataka-india/#${service.id}`} text="Learn More" variant="outline" />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .services-section {
+    
+  }
+
+  /* Subtitle color moved to mobile block */
+
+  .services-list {
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-md);
+    
+    border-bottom: 1px solid var(--color-border);
+    transition: background-color 0.4s var(--ease-out), padding 0.4s var(--ease-out);
+    position: relative;
+  }
+
+  @media (min-width: 768px) {
+    .service-row {
+      grid-template-columns: 2fr 1fr auto;
+      align-items: center;
+      padding: 3rem 2rem;
+    }
+
+    .service-row:hover {
+      background-color: var(--color-surface);
+      border-radius: var(--radius-2xl);
+      padding: 4rem 2rem;
+      border-bottom-color: transparent;
+      box-shadow: var(--shadow-sm);
+    }
+  }
+
+  .service-content {
+    display: flex;
+    gap: var(--space-md);
+  }
+
+  .service-number {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+  }
+
+  .service-title {
+    font-size: 2rem;
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+  }
+
+  .service-desc {
+    margin: 0;
+    max-width: 500px;
+  }
+
+  .service-image-preview {
+    display: none;
+  }
+
+  @media (min-width: 768px) {
+    .service-image-preview {
+      display: block;
+      width: 150px;
+      height: 100px;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      opacity: 0;
+      transform: translateX(-20px);
+      transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
+    }
+
+    .service-image-preview img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .service-row:hover .service-image-preview {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* Change border radius for Learn More buttons to a modern rounded rectangle */
+  .service-action :global(a),
+  .service-action :global(.btn-bg) {
+    border-radius: 8px !important;
+  }
+
+  /* --- Mobile Only Overrides --- */
+  @media (max-width: 767px) {
+    .service-row {
+      grid-template-columns: 32px 1fr; /* Fixed width for the number */
+      row-gap: 12px;
+      column-gap: 0;
+      padding: var(--space-xl) var(--space-md); /* Shared scale padding */
+    }
+
+    /* Flatten the DOM structure for CSS Grid */
+    .service-content, .service-details {
+      display: contents; 
+    }
+
+    /* Make the "What we offer" subtitle brand yellow */
+    .services-section .subtitle {
+      color: var(--color-secondary);
+    }
+
+    .service-number {
+      grid-column: 1;
+      grid-row: 1;
+      font-size: 1rem; /* Small */
+      color: var(--color-secondary); /* Brand yellow */
+      padding-top: 3px; /* Visual alignment with title */
+    }
+
+    .service-title {
+      grid-column: 2;
+      grid-row: 1;
+      font-size: 20px;
+      margin-bottom: 0;
+      line-height: 1.25;
+    }
+
+    .service-desc {
+      grid-column: 1 / -1; /* Full width, no indent */
+      grid-row: 2;
+      font-size: 15px;
+      line-height: 1.6; /* Comfortable line spacing */
+      max-width: none;
+    }
+
+    .service-action {
+      grid-column: 1 / -1;
+      grid-row: 3;
+      margin-top: 4px; /* 12px row-gap + 4px = 16px total gap from description */
+      margin-bottom: 4px; /* Ensures safe space before row padding starts */
+      display: flex;
+      justify-content: flex-start;
+    }
+
+    /* Small Button Styles for Mobile */
+    .service-action :global(a) {
+      height: 36px;
+      padding: 0 16px;
+      font-size: 11px;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      width: max-content;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    /* 44px Minimum Tap Area for Accessibility */
+    .service-action :global(a::after) {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100%;
+      min-height: 44px;
+      min-width: 44px;
+    }
+  }
+</style>
