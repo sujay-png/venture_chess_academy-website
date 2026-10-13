@@ -6,9 +6,6 @@ import { courses } from "../../data/courses";
   <div class="container">
     <div class="section-header-row reveal-fade-up">
       <h2 class="title">Syllabus</h2>
-      <a href="/chess-academy-karnataka-india/" class="btn-view-all">
-        View All Courses <span class="arrow">→</span>
-      </a>
     </div>
 
     <div class="courses-grid">
@@ -36,6 +33,12 @@ import { courses } from "../../data/courses";
         ))
       }
     </div>
+
+    <div class="section-controls-row reveal-fade-up" style="transition-delay: 0.3s;">
+      <a href="/chess-academy-karnataka-india/" class="btn-view-all">
+        View All Courses <span class="arrow">→</span>
+      </a>
+    </div>
   </div>
 </section>
 
@@ -46,26 +49,24 @@ import { courses } from "../../data/courses";
 
   /* Header Row */
   .section-header-row {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 12px; /* Small gap between title and button on phone */
     margin-bottom: var(--space-lg);
-  }
-
-  @media (min-width: 641px) {
-    .section-header-row {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-      gap: var(--space-md);
-    }
   }
 
   .title {
     color: var(--color-primary);
     font-size: clamp(1.85rem, 4vw, 3rem);
     margin: 0;
+  }
+
+  /* Centered controls row below cards */
+  .section-controls-row {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    margin-top: 36px; /* 32-40px gap between cards and button */
+    margin-bottom: 56px; /* 48-64px space before Why Venture section */
+    text-align: center;
   }
 
   .btn-view-all {
@@ -86,14 +87,7 @@ import { courses } from "../../data/courses";
     letter-spacing: 0.05em;
     transition: background-color var(--duration-normal) var(--ease-out), transform var(--duration-normal) var(--ease-out);
     white-space: nowrap;
-    margin-left: auto; /* Aligns right if it wraps to the second row */
-    align-self: flex-end; /* Ensures right-alignment in column layout */
-  }
-
-  @media (min-width: 641px) {
-    .btn-view-all {
-      align-self: auto;
-    }
+    margin: 0 auto;
   }
 
   /* Expand tap area to 44px */

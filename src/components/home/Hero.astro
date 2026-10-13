@@ -178,7 +178,7 @@ import MagneticButton from "../ui/MagneticButton.astro";
     object-position: center 65%; /* Phone crop trims mostly the empty wall, keeping face, laptop and books in view */
   }
 
-  /* Soft light fade in the bright upper area, behind the text only */
+  /* Mobile: very light top-to-bottom theme brown gradient (18% at top fading to 0% by 45%) */
   .hero-overlay {
     position: absolute;
     inset: 0;
@@ -186,10 +186,22 @@ import MagneticButton from "../ui/MagneticButton.astro";
     pointer-events: none;
     background: linear-gradient(
       to bottom,
-      rgba(255, 252, 249, 0.6) 0%,
-      rgba(255, 252, 249, 0.35) 28%,
-      rgba(255, 252, 249, 0) 42%
+      rgba(89, 34, 24, 0.18) 0%,
+      rgba(89, 34, 24, 0) 45%,
+      rgba(89, 34, 24, 0) 100%
     );
+  }
+
+  /* Tablet and laptop/desktop: very light left-to-right gradient (18% at left edge fading to 0% by 45%) */
+  @media (min-width: 641px) {
+    .hero-overlay {
+      background: linear-gradient(
+        to right,
+        rgba(89, 34, 24, 0.18) 0%,
+        rgba(89, 34, 24, 0) 45%,
+        rgba(89, 34, 24, 0) 100%
+      );
+    }
   }
 
   /* Hero Content Container Layer */
@@ -216,15 +228,15 @@ import MagneticButton from "../ui/MagneticButton.astro";
     align-items: center;
     gap: 0.5rem;
     background-color: #f7dac4;
-    color: #a04910;
+    color: var(--color-primary);
     padding: 0.5rem 1.1rem;
     border-radius: var(--radius-pill);
-    font-weight: 600;
+    font-weight: 700;
     font-family: var(--font-display);
     font-size: 0.9375rem;
     margin: 0 auto 0.875rem;
-    box-shadow: 0 4px 10px rgba(160, 73, 16, 0.12);
-    border: 2px dashed rgba(160, 73, 16, 0.3);
+    box-shadow: 0 4px 10px rgba(89, 34, 24, 0.15);
+    border: 2px dashed rgba(89, 34, 24, 0.35);
   }
 
   .badge-icon {
@@ -255,13 +267,13 @@ import MagneticButton from "../ui/MagneticButton.astro";
   .title-dark {
     display: block;
     color: var(--color-primary);
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    text-shadow: none;
   }
 
   .title-orange {
     display: block;
-    color: #d4621c;
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+    color: #8D3B12;
+    text-shadow: none;
   }
 
   /* Hand-drawn Underline SVG */
@@ -270,6 +282,10 @@ import MagneticButton from "../ui/MagneticButton.astro";
     height: 16px;
     display: block;
     margin: -0.75rem auto 1.25rem;
+  }
+
+  .headline-underline path {
+    stroke: #8D3B12 !important;
   }
 
   /* Actions & Button */
@@ -321,15 +337,6 @@ import MagneticButton from "../ui/MagneticButton.astro";
 
     .hero-bg-img {
       object-position: center bottom;
-    }
-
-    .hero-overlay {
-      background: radial-gradient(
-        ellipse 32% 70% at 22% 55%,
-        rgba(255, 252, 249, 0.5) 0%,
-        rgba(255, 252, 249, 0.25) 55%,
-        rgba(255, 252, 249, 0) 100%
-      );
     }
 
     /* Text is placed by viewport width so it always ends before the child's head (~45% across) */
@@ -393,6 +400,7 @@ import MagneticButton from "../ui/MagneticButton.astro";
     cursor: pointer;
     box-shadow: 0 10px 25px rgba(89, 34, 24, 0.25);
     text-decoration: none;
+    border: 1.5px solid rgba(255, 255, 255, 0.65);
   }
 
   .custom-hero-btn .btn-text {
@@ -409,7 +417,7 @@ import MagneticButton from "../ui/MagneticButton.astro";
     width: 100%;
     height: 100%;
     border-radius: 8px;
-    background-color: var(--color-primary);
+    background-color: #743024;
     z-index: -1;
     transition: transform 0.4s var(--ease-spring);
   }
@@ -425,8 +433,18 @@ import MagneticButton from "../ui/MagneticButton.astro";
     display: none;
     position: absolute;
     pointer-events: none;
-    opacity: 0.9;
+    opacity: 0.95;
     z-index: 4;
+  }
+
+  .doodle-crown path,
+  .doodle-bulb path,
+  .doodle-heart path {
+    stroke: #8D3B12 !important;
+  }
+
+  .doodle-crown circle {
+    fill: #8D3B12 !important;
   }
 
   @media (min-width: 1025px) {

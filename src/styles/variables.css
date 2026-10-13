@@ -10,7 +10,9 @@
   --color-nav-pill: #FDE6CB; /* Soft peach */
   --color-nav-pill-hover: rgba(253, 230, 203, 0.5); /* 50% peach */
   --color-nav-active-text: #B65617; /* Burnt orange */
-  --color-secondary: #facc15; /* Yellow accent */
+  --color-secondary: #B65617; /* Burnt orange / Deep peach-orange accent for light backgrounds (matches active nav/card titles) */
+  --color-secondary-light: #F6C9A0; /* Light peach accent for dark backgrounds */
+  --color-btn-peach: #f2b77a; /* Theme peach matching My Classroom CTA */
   --color-bg: #f8fafc;
   --color-surface: #ffffff;
   --color-text: #0f172a;

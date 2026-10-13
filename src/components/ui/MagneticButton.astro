@@ -30,6 +30,7 @@ const Tag = href ? 'a' : 'button';
     text-transform: uppercase;
     letter-spacing: 0.05em;
     overflow: hidden;
+    color: var(--color-surface);
     transition: color 0.3s var(--ease-out);
     z-index: 1;
     cursor: pointer;
@@ -50,22 +51,17 @@ const Tag = href ? 'a' : 'button';
     height: 100%;
     border-radius: 8px;
     z-index: -1;
-    transition: transform 0.4s var(--ease-spring);
+    transition: transform 0.4s var(--ease-spring), background-color 0.3s var(--ease-out);
   }
 
   /* Variants */
-  .btn-primary {
+  .btn-primary,
+  .btn-secondary {
     color: var(--color-surface);
   }
-  .btn-primary .btn-bg {
-    background-color: var(--color-primary);
-  }
-
-  .btn-secondary {
-    color: var(--color-primary);
-  }
+  .btn-primary .btn-bg,
   .btn-secondary .btn-bg {
-   background-color:  #a13420;
+    background-color: var(--color-primary);
   }
 
   .btn-outline {
@@ -80,12 +76,18 @@ const Tag = href ? 'a' : 'button';
     color: var(--color-surface);
   }
   .btn-outline:hover .btn-bg {
+    background-color: #3a1610;
     transform: translateY(0);
   }
 
   /* Hover states for solid buttons */
+  .btn-primary:hover,
+  .btn-secondary:hover {
+    color: var(--color-surface);
+  }
   .btn-primary:hover .btn-bg,
   .btn-secondary:hover .btn-bg {
+    background-color: #3a1610;
     transform: scale(1.05);
   }
 </style>

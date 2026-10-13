@@ -73,6 +73,13 @@ p {
   display: block;
 }
 
+/* Dark background sections: adapt secondary accent to light peach */
+.why-venture-section,
+.footer-section,
+footer {
+  --color-secondary: var(--color-secondary-light, #F6C9A0);
+}
+
 a {
   color: inherit;
   text-decoration: none;

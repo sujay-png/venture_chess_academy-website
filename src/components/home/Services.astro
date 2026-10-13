@@ -122,10 +122,40 @@ import MagneticButton from '../ui/MagneticButton.astro';
     }
   }
 
-  /* Change border radius for Learn More buttons to a modern rounded rectangle */
-  .service-action :global(a),
+  /* Learn More buttons in What We Offer section */
+  .service-action :global(a) {
+    border-radius: 8px !important;
+    background-color: var(--color-primary) !important;
+    color: var(--color-surface) !important;
+    border-color: var(--color-primary) !important;
+    transition: background-color var(--duration-normal) var(--ease-out), color var(--duration-normal) var(--ease-out) !important;
+  }
+
   .service-action :global(.btn-bg) {
     border-radius: 8px !important;
+    background-color: var(--color-primary) !important;
+    transform: translateY(0);
+    transition: background-color var(--duration-normal) var(--ease-out), transform 0.4s var(--ease-spring) !important;
+  }
+
+  .service-action :global(.btn-text) {
+    color: var(--color-surface) !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .service-action :global(a:hover) {
+    background-color: #3a1610 !important;
+    color: var(--color-surface) !important;
+    border-color: #3a1610 !important;
+  }
+
+  .service-action :global(a:hover .btn-bg) {
+    background-color: #3a1610 !important;
+  }
+
+  .service-action :global(a:hover .btn-text) {
+    color: var(--color-surface) !important;
   }
 
   /* --- Mobile Only Overrides --- */

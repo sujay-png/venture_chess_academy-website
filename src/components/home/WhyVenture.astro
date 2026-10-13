@@ -249,9 +249,41 @@ import MagneticButton from '../ui/MagneticButton.astro';
     margin-top: 2rem;
   }
 
-  /* Change border radius for CTA button to a modern rounded rectangle */
-  .action-wrapper :global(a),
-  .action-wrapper :global(.btn-bg) {
+  /* "BOOK YOUR CHILD'S FREE CLASS" CTA Button Customization */
+  .action-wrapper :global(.magnetic-btn) {
+    border: 1.5px solid rgba(255, 255, 255, 0.65) !important;
     border-radius: 8px !important;
+    padding: 15px 30px !important;
+    color: #f8fafc !important;
+    transition: border-color var(--duration-normal) var(--ease-out), color var(--duration-normal) var(--ease-out) !important;
+  }
+
+  .action-wrapper :global(.magnetic-btn .btn-bg) {
+    border-radius: 8px !important;
+    background-color: #743024 !important; /* Lighter shade of theme brown */
+    transition: background-color var(--duration-normal) var(--ease-out), transform 0.4s var(--ease-spring) !important;
+  }
+
+  .action-wrapper :global(.magnetic-btn .btn-text) {
+    color: #f8fafc !important; /* Soft white text */
+  }
+
+  /* Hover state: retains border and soft white text with subtle brighter brown tone */
+  .action-wrapper :global(.magnetic-btn:hover) {
+    border-color: rgba(255, 255, 255, 0.85) !important;
+  }
+
+  .action-wrapper :global(.magnetic-btn:hover .btn-bg) {
+    background-color: #84382b !important;
+  }
+
+  .action-wrapper :global(.magnetic-btn:hover .btn-text) {
+    color: #ffffff !important;
+  }
+
+  /* Keyboard focus outline */
+  .action-wrapper :global(.magnetic-btn:focus-visible) {
+    outline: 2px solid rgba(255, 255, 255, 0.65) !important;
+    outline-offset: 3px !important;
   }
 </style>

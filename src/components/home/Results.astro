@@ -10,16 +10,13 @@ const featuredResults = achievements.slice(0, 6);
   <div class="container">
     <div class="section-header reveal-fade-up">
       <h2 class="title">Student Results</h2>
-      <div class="results-actions">
-        <div class="slider-nav">
-          <button class="slider-btn prev-btn" aria-label="Previous results">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-          </button>
-          <button class="slider-btn next-btn" aria-label="Next results">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-          </button>
-        </div>
-        <MagneticButton href="/chess-student-achievements/" text="View More Results " variant="secondary" className="results-view-all-btn" />
+      <div class="header-arrows">
+        <button class="slider-btn prev-btn" aria-label="Previous results">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button class="slider-btn next-btn" aria-label="Next results">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
       </div>
     </div>
 
@@ -39,6 +36,10 @@ const featuredResults = achievements.slice(0, 6);
           </div>
         ))}
       </div>
+    </div>
+
+    <div class="section-controls-row reveal-fade-up" style="transition-delay: 0.25s;">
+      <MagneticButton href="/chess-student-achievements/" text="View More Results " variant="secondary" className="results-view-all-btn" />
     </div>
   </div>
 </section>
@@ -81,32 +82,32 @@ const featuredResults = achievements.slice(0, 6);
 
   .section-header {
     display: flex;
-    flex-direction: column;
-    gap: var(--space-md);
-    margin-bottom: var(--space-lg);
-  }
-
-  @media (min-width: 768px) {
-    .section-header {
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
-
-  .results-actions {
-    display: flex;
-    justify-content: space-between;
     align-items: center;
-    width: 100%;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-lg);
+    flex-wrap: wrap;
+  }
+
+  .header-arrows {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-left: auto;
   }
 
   @media (min-width: 768px) {
-    .results-actions {
-      width: auto;
-      justify-content: flex-end;
-      gap: var(--space-md);
+    .header-arrows {
+      gap: 16px;
     }
+  }
+
+  /* Centered controls row below cards */
+  .section-controls-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 36px;
   }
 
   /* Override MagneticButton for this section only */
@@ -115,19 +116,30 @@ const featuredResults = achievements.slice(0, 6);
     height: 40px !important;
     min-height: 44px !important; /* Ensure tap area is safe */
     padding: 0 16px !important;
-    
+    color: var(--color-surface) !important;
   }
   
   :global(.results-view-all-btn.magnetic-btn .btn-bg) {
     border-radius: 8px !important;
+    background-color: var(--color-primary) !important;
+    transition: background-color var(--duration-normal) var(--ease-out), transform 0.4s var(--ease-spring) !important;
+  }
+
+  :global(.results-view-all-btn.magnetic-btn:hover .btn-bg) {
+    background-color: #3a1610 !important;
   }
 
   :global(.results-view-all-btn.magnetic-btn .btn-text) {
+    color: var(--color-surface) !important;
     font-size: 13px !important;
     font-weight: 600 !important;
     text-transform: uppercase !important;
     letter-spacing: 0.05em !important;
     white-space: nowrap !important;
+  }
+
+  :global(.results-view-all-btn.magnetic-btn:hover .btn-text) {
+    color: var(--color-surface) !important;
   }
 
   @media (max-width: 767px) {
@@ -139,10 +151,6 @@ const featuredResults = achievements.slice(0, 6);
     }
   }
 
-  .slider-nav {
-    display: flex;
-    gap: var(--space-sm);
-  }
 
   .slider-btn {
     display: flex;
@@ -166,10 +174,7 @@ const featuredResults = achievements.slice(0, 6);
   }
 
   @media (max-width: 767px) {
-    .slider-nav {
-      gap: 8px;
-    }
-    
+
     .slider-btn {
       width: 36px;
       height: 36px;
@@ -196,6 +201,7 @@ const featuredResults = achievements.slice(0, 6);
   .title {
     color: var(--color-primary);
     font-size: clamp(1.75rem, 4vw, 3rem);
+    margin: 0;
   }
 
   .results-slider-container {
