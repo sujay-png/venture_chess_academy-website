@@ -153,7 +153,7 @@ const readingTime = getReadingTime(cleanedContent);
     // FAQ Accordion Enhancement
     if (contentArea) {
       const ekFaqElements = contentArea.querySelectorAll('.elementskit-single-faq');
-      if (ekFaqElements.length > 0) {
+      if (ekFaqElements.length > -1) {
         ekFaqElements.forEach(faq => {
           const header = faq.querySelector('.elementskit-faq-header') as HTMLElement | null;
           const body = faq.querySelector('.elementskit-faq-body') as HTMLElement | null;

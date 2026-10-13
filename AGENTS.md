@@ -112,7 +112,7 @@ After every task, give a report written like an ex-Google senior engineer turned
 - Sticky titles only on laptop two-column layouts. Never on phone and tablet.
 - Carousels show whole cards only. One click moves one card. Swipe works. Arrows are disabled at the first and last card. All arrows use one shared style.
 - No hover effect on the FAQ rows. Animate only transform and opacity, about 0.2 to 0.4 seconds, and respect reduced motion.
-- Buttons already changed to an 8px radius (Join Free Session, View All Results, View All Courses) keep it. Don't change other buttons' shape without asking.
+- Buttons already changed to an 8px radius (Join Free Session, View More , View All Courses) keep it. Don't change other buttons' shape without asking.
 
 ## 7. Images and performance
 - Use webp, kept in the public folder. Every image has width, height and a short description.
