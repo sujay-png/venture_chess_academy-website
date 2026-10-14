@@ -27,6 +27,27 @@ const keywords = pageSeo?.keywords || Astro.props.keywords || defaultSeo.keyword
 const ogImage = pageSeo?.ogImage || Astro.props.ogImage || defaultSeo.ogImage;
 const ogType = pageSeo?.ogType || Astro.props.ogType || defaultSeo.ogType;
 const canonicalUrl = pageSeo?.canonicalUrl || Astro.props.canonicalUrl || new URL(pathname, Astro.site || 'https://venturechessacademy.com').href;
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "Venture Chess Academy",
+  "alternateName": "VCA",
+  "url": "https://venturechessacademy.com",
+  "logo": "https://venturechessacademy.com/wp-content/uploads/2025/04/Venture-Chess-Academy.png",
+  "image": ogImage,
+  "description": description,
+  "telephone": "+919567027370",
+  "email": "contact@venturechessacademy.com",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "HEGDE Arcade, Main Road",
+    "addressLocality": "Puttur",
+    "addressRegion": "Karnataka",
+    "postalCode": "574201",
+    "addressCountry": "IN"
+  }
+};
 ---
 
 <!DOCTYPE html>
@@ -37,7 +58,6 @@ const canonicalUrl = pageSeo?.canonicalUrl || Astro.props.canonicalUrl || new UR
     <link rel="icon" type="image/png" href="/images/logo/cropped-Venture-Chess-Academy-32x32.png" />
     <title>{title}</title>
     <meta name="description" content={description} />
-    {keywords && <meta name="keywords" content={keywords} />}
     <link rel="canonical" href={canonicalUrl} />
     
     <!-- Open Graph / Facebook -->
@@ -47,6 +67,9 @@ const canonicalUrl = pageSeo?.canonicalUrl || Astro.props.canonicalUrl || new UR
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
+
+    <!-- JSON-LD Structured Data for Google Rich Results -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
     
     <slot name="head" />
   </head>
