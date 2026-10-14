@@ -5,18 +5,28 @@ import '../styles/animations.css';
 
 import Header from '../components/global/Header.astro';
 import Footer from '../components/global/Footer.astro';
+import { getSeoForPath, defaultSeo } from '../data/seo';
 
 export interface Props {
-  title: string;
+  title?: string;
   description?: string;
+  keywords?: string;
   ogImage?: string;
+  ogType?: string;
+  canonicalUrl?: string;
+  forceTitle?: string;
+  forceDescription?: string;
 }
 
-const { 
-  title, 
-  description = "Join Venture Chess Academy for expert online chess coaching with FIDE-rated trainers, personalized classes, and proven learning programs.", 
-  ogImage = "/images/logo/Venture-Chess-Academy.png" 
-} = Astro.props;
+const pathname = Astro.url.pathname;
+const pageSeo = getSeoForPath(pathname);
+
+const title = Astro.props.forceTitle || pageSeo?.title || Astro.props.title || defaultSeo.title;
+const description = Astro.props.forceDescription || pageSeo?.description || Astro.props.description || defaultSeo.description;
+const keywords = pageSeo?.keywords || Astro.props.keywords || defaultSeo.keywords;
+const ogImage = pageSeo?.ogImage || Astro.props.ogImage || defaultSeo.ogImage;
+const ogType = pageSeo?.ogType || Astro.props.ogType || defaultSeo.ogType;
+const canonicalUrl = pageSeo?.canonicalUrl || Astro.props.canonicalUrl || new URL(pathname, Astro.site || 'https://venturechessacademy.com').href;
 ---
 
 <!DOCTYPE html>
@@ -27,18 +37,16 @@ const {
     <link rel="icon" type="image/png" href="/images/logo/cropped-Venture-Chess-Academy-32x32.png" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
+    <link rel="canonical" href={canonicalUrl} />
     
     <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    <meta property="og:site_name" content="Venture Chess Academy" />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={ogImage} />
-    
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={title} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={ogImage} />
     
     <slot name="head" />
   </head>
