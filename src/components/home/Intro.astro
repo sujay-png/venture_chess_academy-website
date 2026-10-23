@@ -1,4 +1,6 @@
 ---
+import MagneticButton from '../ui/MagneticButton.astro';
+
 const amenities = [
   {
     title: "Free Trial / Class Demo",
@@ -73,6 +75,10 @@ const amenities = [
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
         </button>
       </div>
+    </div>
+
+    <div class="amenities-cta-row reveal-fade-up" style="transition-delay: 0.25s;">
+      <MagneticButton href="/contact-us/" text="Get In Touch" variant="primary" className="amenities-cta-btn" />
     </div>
   </div>
 </section>
@@ -240,6 +246,60 @@ const amenities = [
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* Centered CTA row below amenities */
+  .amenities-cta-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 36px;
+  }
+
+  :global(.amenities-cta-btn.magnetic-btn) {
+    border-radius: 8px !important;
+    height: 44px !important;
+    min-height: 44px !important;
+    padding: 0 24px !important;
+    color: var(--color-surface) !important;
+  }
+
+  :global(.amenities-cta-btn.magnetic-btn .btn-bg) {
+    border-radius: 8px !important;
+    background-color: var(--color-primary) !important;
+    transition: background-color var(--duration-normal) var(--ease-out), transform 0.4s var(--ease-spring) !important;
+  }
+
+  :global(.amenities-cta-btn.magnetic-btn:hover .btn-bg) {
+    background-color: #3a1610 !important;
+  }
+
+  :global(.amenities-cta-btn.magnetic-btn .btn-text) {
+    color: var(--color-surface) !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    white-space: nowrap !important;
+  }
+
+  :global(.amenities-cta-btn.magnetic-btn:hover .btn-text) {
+    color: var(--color-surface) !important;
+  }
+
+  @media (max-width: 640px) {
+    .amenities-cta-row {
+      margin-top: 28px;
+    }
+
+    :global(.amenities-cta-btn.magnetic-btn) {
+      height: 44px !important;
+      padding: 0 20px !important;
+    }
+
+    :global(.amenities-cta-btn.magnetic-btn .btn-text) {
+      font-size: 13px !important;
+    }
   }
 </style>
 

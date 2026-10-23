@@ -23,7 +23,7 @@ import { courses } from "../../data/courses";
               <h3 class="course-name">{course.name}</h3>
               <p class="course-desc">{course.description}</p>
               <a
-                href={`/chess-academy-karnataka-india/#${course.id}`}
+                href="/contact-us/"
                 class="course-link"
               >
                 Join Now <span class="arrow">→</span>
@@ -206,8 +206,8 @@ import { courses } from "../../data/courses";
     font-family: var(--font-body);
     font-weight: 600;
     font-size: 0.9rem;
-    color: var(--color-surface);
-    background-color: var(--color-primary);
+    color: var(--color-primary);
+    background-color: #f2b77a;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -218,7 +218,7 @@ import { courses } from "../../data/courses";
     text-transform: uppercase;
     letter-spacing: 0.05em;
     position: static; 
-    transition: background-color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
+    transition: background-color var(--duration-fast) var(--ease-out), color var(--duration-fast) var(--ease-out), transform var(--duration-fast) var(--ease-out);
   }
 
   /* Make entire card clickable */
@@ -233,13 +233,15 @@ import { courses } from "../../data/courses";
     transition: transform var(--duration-normal) var(--ease-out);
   }
 
-  .course-card:hover .course-link {
-    background-color: #3a1610; /* Darker brown */
-    color: var(--color-surface);
+  .course-card:hover .course-link,
+  .course-link:hover {
+    background-color: #e5a867; /* Deeper peach on hover */
+    color: var(--color-primary);
     transform: translateY(-2px);
   }
 
-  .course-card:hover .course-link .arrow {
+  .course-card:hover .course-link .arrow,
+  .course-link:hover .arrow {
     transform: translateX(4px);
   }
 </style>
