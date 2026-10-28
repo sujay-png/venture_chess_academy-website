@@ -10,59 +10,71 @@ import MagneticButton from '../ui/MagneticButton.astro';
       <h2 class="title">In every chess position,<br/>there are opportunities</h2>
     </div>
 
-    <div class="benefits-grid">
-      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.1s;">
-        <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/02/school-boys-playing-chess-e1698161918720.jpg');"></div>
-        <div class="benefit-overlay"></div>
-        <div class="benefit-content">
-          <h3 class="benefit-title">Flexible Weekly Schedule</h3>
-          <a href="/contact-us/" class="benefit-link">Learn More</a>
-        </div>
-      </div>
+    <div class="benefits-track-container reveal-fade-up" style="transition-delay: 0.2s;">
+      <div class="slider-wrapper" style="position: relative; width: 100%;">
+        <button class="benefit-slider-btn benefit-prev-btn" aria-label="Previous benefit" disabled style="position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
 
-      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.2s;">
-        <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/02/selective-focus-of-wooden-chess-board-with-seniors-playing-chess-at-home-e1697916079176.jpg');"></div>
-        <div class="benefit-overlay"></div>
-        <div class="benefit-content">
-          <h3 class="benefit-title">Weekly Tournaments</h3>
-          <a href="/contact-us/" class="benefit-link">Learn More</a>
-        </div>
-      </div>
+        <div class="benefits-grid" id="benefitsTrack" style="display: flex; flex-direction: row; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
+          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
+            <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/02/school-boys-playing-chess-e1698161918720.jpg');"></div>
+            <div class="benefit-overlay"></div>
+            <div class="benefit-content">
+              <h3 class="benefit-title">Flexible Weekly Schedule</h3>
+              <a href="/contact-us/" class="benefit-link">Learn More</a>
+            </div>
+          </div>
 
-      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.3s;">
-        <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/02/smart-boy-playing-chess-and-staring-at-the-chessboard-e1698161801842.jpg');"></div>
-        <div class="benefit-overlay"></div>
-        <div class="benefit-content">
-          <h3 class="benefit-title">Weekly Puzzle Quest</h3>
-          <a href="/contact-us/" class="benefit-link">Learn More</a>
-        </div>
-      </div>
+          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
+            <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/02/selective-focus-of-wooden-chess-board-with-seniors-playing-chess-at-home-e1697916079176.jpg');"></div>
+            <div class="benefit-overlay"></div>
+            <div class="benefit-content">
+              <h3 class="benefit-title">Weekly Tournaments</h3>
+              <a href="/contact-us/" class="benefit-link">Learn More</a>
+            </div>
+          </div>
 
-      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.4s;">
-        <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/02/game-of-chess-e1698161986705.jpg');"></div>
-        <div class="benefit-overlay"></div>
-        <div class="benefit-content">
-          <h3 class="benefit-title">Custom Position Drills</h3>
-          <a href="/contact-us/" class="benefit-link">Learn More</a>
-        </div>
-      </div>
+          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
+            <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/02/smart-boy-playing-chess-and-staring-at-the-chessboard-e1698161801842.jpg');"></div>
+            <div class="benefit-overlay"></div>
+            <div class="benefit-content">
+              <h3 class="benefit-title">Weekly Puzzle Quest</h3>
+              <a href="/contact-us/" class="benefit-link">Learn More</a>
+            </div>
+          </div>
 
-      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.5s;">
-        <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/01/one-to-one-class.webp');"></div>
-        <div class="benefit-overlay"></div>
-        <div class="benefit-content">
-          <h3 class="benefit-title">Assignments</h3>
-          <a href="/contact-us/" class="benefit-link">Learn More</a>
-        </div>
-      </div>
+          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
+            <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/02/game-of-chess-e1698161986705.jpg');"></div>
+            <div class="benefit-overlay"></div>
+            <div class="benefit-content">
+              <h3 class="benefit-title">Custom Position Drills</h3>
+              <a href="/contact-us/" class="benefit-link">Learn More</a>
+            </div>
+          </div>
 
-      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.6s;">
-        <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/02/teenager-playing-chess.jpg');"></div>
-        <div class="benefit-overlay"></div>
-        <div class="benefit-content">
-          <h3 class="benefit-title">Video Courses</h3>
-          <a href="/contact-us/" class="benefit-link">Learn More</a>
+          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
+            <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/01/one-to-one-class.webp');"></div>
+            <div class="benefit-overlay"></div>
+            <div class="benefit-content">
+              <h3 class="benefit-title">Assignments</h3>
+              <a href="/contact-us/" class="benefit-link">Learn More</a>
+            </div>
+          </div>
+
+          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
+            <div class="benefit-bg" style="background-image: url('https://venturechessacademy.com/wp-content/uploads/2026/02/teenager-playing-chess.jpg');"></div>
+            <div class="benefit-overlay"></div>
+            <div class="benefit-content">
+              <h3 class="benefit-title">Video Courses</h3>
+              <a href="/contact-us/" class="benefit-link">Learn More</a>
+            </div>
+          </div>
         </div>
+
+        <button class="benefit-slider-btn benefit-next-btn" aria-label="Next benefit" style="position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
       </div>
     </div>
 
@@ -77,25 +89,117 @@ import MagneticButton from '../ui/MagneticButton.astro';
     background-color: var(--color-surface);
   }
 
-  .benefits-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
+  .slider-wrapper {
+    position: relative;
+    width: 100%;
   }
 
-  @media (min-width: 768px) {
-    .benefits-grid {
-      grid-template-columns: repeat(2, 1fr);
+  /* Controls (Arrows) - exactly like amenities slider in Intro.astro */
+  .benefit-slider-btn {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 10 !important;
+    width: 38px !important;
+    height: 38px !important;
+    background-color: transparent !important;
+    border: none !important;
+    color: var(--color-primary) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: transform 0.2s var(--ease-out), color 0.2s var(--ease-out) !important;
+  }
+
+  .benefit-slider-btn::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+
+  .benefit-slider-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .benefit-slider-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 50%;
+  }
+
+  .benefit-slider-btn:hover:not(:disabled) {
+    transform: translateY(-50%) scale(1.15) !important;
+  }
+
+  .benefit-slider-btn:active:not(:disabled) {
+    transform: translateY(-50%) scale(0.9) !important;
+  }
+
+  .benefit-slider-btn:disabled {
+    opacity: 0.3 !important;
+    cursor: not-allowed !important;
+  }
+
+  /* Hide arrows completely on desktop */
+  @media (min-width: 1024px) {
+    .benefit-slider-btn {
+      display: none !important;
     }
   }
 
+  /* Phone (overlap edges) */
+  .benefit-prev-btn { left: -12px !important; }
+  .benefit-next-btn { right: -12px !important; }
+
+  @media (min-width: 641px) {
+    .benefit-prev-btn { left: -16px !important; }
+    .benefit-next-btn { right: -16px !important; }
+  }
+
+  /* Grid / Track Layout - Flex on mobile, Grid on desktop */
+  .benefits-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: var(--space-md) !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 10px 5px !important;
+    margin: -10px -5px !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .benefits-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Desktop Layout: Standard 3-column grid */
   @media (min-width: 1024px) {
     .benefits-grid {
-      grid-template-columns: repeat(3, 1fr);
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      overflow-x: visible !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      scroll-snap-type: none !important;
     }
   }
 
   .benefit-card {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    scroll-snap-align: start !important;
+    box-sizing: border-box !important;
     position: relative;
     border-radius: var(--radius-xl);
     overflow: hidden;
@@ -103,8 +207,27 @@ import MagneticButton from '../ui/MagneticButton.astro';
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 2.5rem;
+    padding: 2rem 1.5rem;
     cursor: pointer;
+  }
+
+  @media (min-width: 641px) {
+    .benefit-card {
+      flex: 0 0 calc(50% - (var(--space-md) / 2)) !important;
+      width: calc(50% - (var(--space-md) / 2)) !important;
+      min-width: calc(50% - (var(--space-md) / 2)) !important;
+      max-width: calc(50% - (var(--space-md) / 2)) !important;
+      padding: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .benefit-card {
+      flex: none !important;
+      width: auto !important;
+      min-width: 0 !important;
+      max-width: none !important;
+    }
   }
 
   .benefit-bg {
@@ -242,4 +365,53 @@ import MagneticButton from '../ui/MagneticButton.astro';
       font-size: 13px !important;
     }
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .benefit-slider-btn {
+      transition: none !important;
+    }
+  }
 </style>
+
+<script>
+  const initBenefitsSlider = () => {
+    const track = document.getElementById('benefitsTrack');
+    const prevBtn = document.querySelector('.benefits-section .benefit-prev-btn') as HTMLButtonElement;
+    const nextBtn = document.querySelector('.benefits-section .benefit-next-btn') as HTMLButtonElement;
+    if (!track) return;
+
+    const getScrollAmount = () => {
+      const card = track.querySelector('.benefit-card');
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      return card ? (card as HTMLElement).offsetWidth + gap : 0;
+    };
+
+    const updateButtons = () => {
+      if (!prevBtn || !nextBtn) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      prevBtn.disabled = track.scrollLeft <= 5;
+      nextBtn.disabled = track.scrollLeft >= maxScroll - 5;
+    };
+
+    prevBtn?.addEventListener('click', () => {
+      track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    });
+
+    track.addEventListener('scroll', () => {
+      requestAnimationFrame(updateButtons);
+    }, { passive: true });
+
+    window.addEventListener('resize', updateButtons);
+    setTimeout(updateButtons, 100);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBenefitsSlider);
+  } else {
+    initBenefitsSlider();
+  }
+</script>

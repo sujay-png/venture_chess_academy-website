@@ -8,30 +8,39 @@ import { courses } from "../../data/courses";
       <h2 class="title">Syllabus</h2>
     </div>
 
-    <div class="courses-grid">
-      {
-        courses.map((course, index) => (
-          <div
-            class="course-card reveal-fade-up"
-            style={`transition-delay: ${(index % 3) * 0.1}s;`}
-          >
-            <div class="course-image">
-              <img src={course.image} alt={course.name} />
-            </div>
-            <div class="course-content">
-              <div class="course-level">LEVEL 0{index + 1}</div>
-              <h3 class="course-name">{course.name}</h3>
-              <p class="course-desc">{course.description}</p>
-              <a
-                href="/contact-us/"
-                class="course-link"
-              >
-                Join Now <span class="arrow">→</span>
-              </a>
-            </div>
-          </div>
-        ))
-      }
+    <div class="curriculum-track-container reveal-fade-up" style="transition-delay: 0.2s;">
+      <div class="slider-wrapper" style="position: relative; width: 100%;">
+        <button class="course-slider-btn course-prev-btn" aria-label="Previous syllabus course" disabled style="position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+
+        <div class="courses-grid" id="curriculumTrack" style="display: flex; flex-direction: row; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
+          {
+            courses.map((course, index) => (
+              <div class="course-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
+                <div class="course-image">
+                  <img src={course.image} alt={course.name} />
+                </div>
+                <div class="course-content">
+                  <div class="course-level">LEVEL 0{index + 1}</div>
+                  <h3 class="course-name">{course.name}</h3>
+                  <p class="course-desc">{course.description}</p>
+                  <a
+                    href="/contact-us/"
+                    class="course-link"
+                  >
+                    Join Now <span class="arrow">→</span>
+                  </a>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+
+        <button class="course-slider-btn course-next-btn" aria-label="Next syllabus course" style="position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
     </div>
 
     <div class="section-controls-row reveal-fade-up" style="transition-delay: 0.3s;">
@@ -113,27 +122,118 @@ import { courses } from "../../data/courses";
     transform: translateX(4px);
   }
 
-  /* Grid Layout */
-  .courses-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: var(--space-md);
+  .slider-wrapper {
+    position: relative;
+    width: 100%;
   }
 
-  @media (min-width: 768px) {
-    .courses-grid {
-      grid-template-columns: repeat(2, 1fr);
+  /* Controls (Arrows) - exactly like amenities slider in Intro.astro */
+  .course-slider-btn {
+    position: absolute !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+    z-index: 10 !important;
+    width: 38px !important;
+    height: 38px !important;
+    background-color: transparent !important;
+    border: none !important;
+    color: var(--color-primary) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: transform 0.2s var(--ease-out), color 0.2s var(--ease-out) !important;
+  }
+
+  .course-slider-btn::after {
+    content: '' !important;
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+
+  .course-slider-btn svg {
+    width: 24px !important;
+    height: 24px !important;
+  }
+
+  .course-slider-btn:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+    border-radius: 50%;
+  }
+
+  .course-slider-btn:hover:not(:disabled) {
+    transform: translateY(-50%) scale(1.15) !important;
+  }
+
+  .course-slider-btn:active:not(:disabled) {
+    transform: translateY(-50%) scale(0.9) !important;
+  }
+
+  .course-slider-btn:disabled {
+    opacity: 0.3 !important;
+    cursor: not-allowed !important;
+  }
+
+  /* Hide arrows completely on desktop */
+  @media (min-width: 1024px) {
+    .course-slider-btn {
+      display: none !important;
     }
   }
 
+  /* Phone (overlap edges) */
+  .course-prev-btn { left: -12px !important; }
+  .course-next-btn { right: -12px !important; }
+
+  @media (min-width: 641px) {
+    .course-prev-btn { left: -16px !important; }
+    .course-next-btn { right: -16px !important; }
+  }
+
+  /* Grid / Track Layout - Flex on mobile, Grid on desktop */
+  .courses-grid {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    gap: var(--space-md) !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    padding: 10px 5px !important;
+    margin: -10px -5px !important;
+    scroll-snap-type: x mandatory !important;
+    scrollbar-width: none !important;
+    -webkit-overflow-scrolling: touch !important;
+  }
+
+  .courses-grid::-webkit-scrollbar {
+    display: none !important;
+  }
+
+  /* Desktop Layout: Standard 3-column grid */
   @media (min-width: 1024px) {
     .courses-grid {
-      grid-template-columns: repeat(3, 1fr);
+      display: grid !important;
+      grid-template-columns: repeat(3, 1fr) !important;
+      overflow-x: visible !important;
+      padding: 0 !important;
+      margin: 0 !important;
+      scroll-snap-type: none !important;
     }
   }
 
   /* Card Layout */
   .course-card {
+    flex: 0 0 100% !important;
+    width: 100% !important;
+    min-width: 100% !important;
+    max-width: 100% !important;
+    scroll-snap-align: start !important;
+    box-sizing: border-box !important;
     position: relative;
     background-color: var(--color-surface);
     border: 1px solid var(--color-border);
@@ -143,6 +243,24 @@ import { courses } from "../../data/courses";
     display: flex;
     flex-direction: column;
     transition: transform var(--duration-normal) var(--ease-out), box-shadow var(--duration-normal) var(--ease-out);
+  }
+
+  @media (min-width: 641px) {
+    .course-card {
+      flex: 0 0 calc(50% - (var(--space-md) / 2)) !important;
+      width: calc(50% - (var(--space-md) / 2)) !important;
+      min-width: calc(50% - (var(--space-md) / 2)) !important;
+      max-width: calc(50% - (var(--space-md) / 2)) !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .course-card {
+      flex: none !important;
+      width: auto !important;
+      min-width: 0 !important;
+      max-width: none !important;
+    }
   }
 
   .course-card:hover {
@@ -244,4 +362,53 @@ import { courses } from "../../data/courses";
   .course-link:hover .arrow {
     transform: translateX(4px);
   }
+
+  @media (prefers-reduced-motion: reduce) {
+    .course-slider-btn {
+      transition: none !important;
+    }
+  }
 </style>
+
+<script>
+  const initCurriculumSlider = () => {
+    const track = document.getElementById('curriculumTrack');
+    const prevBtn = document.querySelector('.curriculum-section .course-prev-btn') as HTMLButtonElement;
+    const nextBtn = document.querySelector('.curriculum-section .course-next-btn') as HTMLButtonElement;
+    if (!track) return;
+
+    const getScrollAmount = () => {
+      const card = track.querySelector('.course-card');
+      const gap = parseFloat(getComputedStyle(track).gap) || 0;
+      return card ? (card as HTMLElement).offsetWidth + gap : 0;
+    };
+
+    const updateButtons = () => {
+      if (!prevBtn || !nextBtn) return;
+      const maxScroll = track.scrollWidth - track.clientWidth;
+      prevBtn.disabled = track.scrollLeft <= 5;
+      nextBtn.disabled = track.scrollLeft >= maxScroll - 5;
+    };
+
+    prevBtn?.addEventListener('click', () => {
+      track.scrollBy({ left: -getScrollAmount(), behavior: 'smooth' });
+    });
+
+    nextBtn?.addEventListener('click', () => {
+      track.scrollBy({ left: getScrollAmount(), behavior: 'smooth' });
+    });
+
+    track.addEventListener('scroll', () => {
+      requestAnimationFrame(updateButtons);
+    }, { passive: true });
+
+    window.addEventListener('resize', updateButtons);
+    setTimeout(updateButtons, 100);
+  };
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCurriculumSlider);
+  } else {
+    initCurriculumSlider();
+  }
+</script>
