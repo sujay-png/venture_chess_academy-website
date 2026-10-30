@@ -149,6 +149,7 @@ const checkActive = (href: string) => {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.03);
     transition: all 0.3s var(--ease-out);
+    position: relative;
   }
 
   @media (min-width: 641px) {
@@ -184,7 +185,7 @@ const checkActive = (href: string) => {
   .logo-text {
     font-family: var(--font-display);
     font-weight: 700;
-    font-size: clamp(0.875rem, 3.5vw, 1.125rem);
+    font-size: clamp(0.8125rem, 3.5vw, 1.125rem);
     line-height: 1.2;
     color: var(--color-primary);
     letter-spacing: -0.01em;
@@ -214,6 +215,25 @@ const checkActive = (href: string) => {
 
   .logo-link:focus-visible .logo-image {
     transform: rotate(12deg) scale(1.08);
+  }
+
+  @media (max-width: 1023px) {
+    .logo-link {
+      position: static;
+    }
+
+    .logo-text {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      max-width: calc(100% - 130px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      pointer-events: auto;
+    }
   }
 
   @media (min-width: 1024px) {
