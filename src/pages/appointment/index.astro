@@ -1,36 +1,94 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import PageHeader from '../../components/ui/PageHeader.astro';
+import MagneticButton from '../../components/ui/MagneticButton.astro';
 ---
 
-<BaseLayout title="Page not found - venture" description="">
+<BaseLayout title="Book Online Chess Classes | Free Trial - Venture Chess Academy" description="Book a free chess trial at Venture Chess Academy. Help your child learn chess with expert coaches and personalized guidance.">
   <PageHeader title="Book Online Chess Classes" subtitle="FREE TRIAL" />
 
   <section class="section appointment-content">
     <div class="container">
       <div class="booking-wrapper reveal-fade-up">
-        <!-- Placeholder for Booking Embed (e.g. Calendly) -->
-        <div class="booking-placeholder">
-          <h3 class="text-h3 text-primary mb-4">Schedule Your Free Trial</h3>
-          <p class="mb-4 text-center">Please select a time that works best for you to attend the demo session.</p>
-          
-          <div class="mock-calendar">
-            <div class="mock-section-header">
-              <span class="mock-month">September 2026</span>
-              <div class="mock-arrows">
-                <span>&lt;</span>
-                <span>&gt;</span>
+        <div class="booking-form-container">
+          <h2 class="text-h2 text-primary mb-2 text-center">Join Free Trial Session</h2>
+          <p class="mb-8 text-center subtitle-text">Please fill out the form below to book your free chess trial session.</p>
+
+          <!-- Hidden iframe to handle cross-origin submission without page navigation -->
+          <iframe name="appointment_hidden_iframe" id="appointment_hidden_iframe" style="display: none;" tabindex="-1" aria-hidden="true"></iframe>
+
+          <form class="appointment-form elementor-ajax-form" action="https://venturechessacademy.com/wp-admin/admin-ajax.php" method="POST" target="appointment_hidden_iframe">
+            <input type="hidden" name="action" value="elementor_pro_forms_send_form" />
+            <input type="hidden" name="post_id" value="205" />
+            <input type="hidden" name="form_id" value="dfe28c1" />
+            <input type="hidden" name="referer_title" value="Free Chess Trial | Book Online Chess Classes | chess free trial" />
+            <input type="hidden" name="queried_id" value="205" />
+
+            <div class="form-group">
+              <label for="name">Name</label>
+              <input type="text" id="name" name="form_fields[name]" required placeholder="Name" />
+            </div>
+
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="form_fields[email]" required placeholder="Email" />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">Phone</label>
+              <input type="tel" id="phone" name="form_fields[message]" required placeholder="+91" />
+            </div>
+
+            <div class="form-group">
+              <label for="kidsName">Kids Name</label>
+              <input type="text" id="kidsName" name="form_fields[field_a4dec15]" required placeholder="Kids Name" />
+            </div>
+
+            <div class="form-group">
+              <label for="kidsAge">Kids Age</label>
+              <input type="number" id="kidsAge" name="form_fields[field_31f6737]" required placeholder="Kids Age" />
+            </div>
+
+            <div class="form-group">
+              <label for="country">Country</label>
+              <select id="country" name="form_fields[field_0a2b6ff]" required>
+                <option value="" disabled selected>Select Country Name</option>
+                <option value="India">India</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="United Arab Emirates">United Arab Emirates</option>
+                <option value="Australia">Australia</option>
+                <option value="Canada">Canada</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Germany">Germany</option>
+                <option value="New Zealand">New Zealand</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="city">City</label>
+              <input type="text" id="city" name="form_fields[field_392c1d6]" required placeholder="City" />
+            </div>
+
+            <div class="form-group">
+              <label for="fideProfile">Share FIDE Profile</label>
+              <input type="text" id="fideProfile" name="form_fields[field_03d32dc]" placeholder="Share FIDE Profile" />
+            </div>
+
+            <div class="form-group">
+              <label>Kids Prior Experience</label>
+              <div class="radio-group">
+                <label><input type="radio" name="form_fields[field_09177c7]" value="New to Chess" required /> New to Chess</label>
+                <label><input type="radio" name="form_fields[field_09177c7]" value="Taken Class / Plays Well" /> Taken Class / Plays Well</label>
+                <label><input type="radio" name="form_fields[field_09177c7]" value="Played Tournaments " /> Played Tournaments</label>
+                <label><input type="radio" name="form_fields[field_09177c7]" value="Other" /> Other</label>
               </div>
             </div>
-            <div class="mock-calendar-grid">
-              <!-- Mock days -->
-              {Array.from({length: 30}).map((_, i) => (
-                <div class={`mock-day ${i === 15 ? 'is-selected' : ''}`}>{i + 1}</div>
-              ))}
-            </div>
-            
-            <a href="https://forms.gle/YOUR_GOOGLE_FORM_ID" target="_blank" rel="noopener noreferrer" class="booking-cta mt-8">Contact Us to Book</a>
-          </div>
+
+            <MagneticButton text="Submit" variant="primary" />
+            <div class="form-status" aria-live="polite"></div>
+          </form>
         </div>
       </div>
     </div>
@@ -42,16 +100,27 @@ import PageHeader from '../../components/ui/PageHeader.astro';
     color: var(--color-primary);
   }
 
+  .mb-2 {
+    margin-bottom: var(--space-xs);
+  }
+
   .mb-4 {
     margin-bottom: var(--space-md);
   }
 
-  .mt-8 {
-    margin-top: 2rem;
+  .mb-8 {
+    margin-bottom: var(--space-lg);
+  }
+
+  .subtitle-text {
+    color: var(--color-text);
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.85;
   }
 
   .booking-wrapper {
-    max-width: 800px;
+    max-width: 640px;
     margin: 0 auto;
     background-color: var(--color-surface);
     border-radius: var(--radius-2xl);
@@ -62,82 +131,143 @@ import PageHeader from '../../components/ui/PageHeader.astro';
 
   @media (min-width: 768px) {
     .booking-wrapper {
-      padding: 5rem;
+      padding: 3rem;
     }
   }
 
-  .booking-placeholder {
+  .appointment-form {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    gap: var(--space-md);
   }
 
-  /* Mock Calendar Styles just for aesthetics until real embed is provided */
-  .mock-calendar {
-    width: 100%;
-    max-width: 400px;
-    background-color: var(--color-bg);
-    border-radius: var(--radius-xl);
-    padding: var(--space-md);
-    margin-top: 2rem;
-    border: 1px solid var(--color-border);
-  }
-
-  .mock-calendar-header {
+  .form-group {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: var(--space-md);
-    font-weight: 600;
-  }
-
-  .mock-arrows span {
-    cursor: pointer;
-    padding: 0.5rem;
-    color: var(--color-primary);
-  }
-
-  .mock-calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    flex-direction: column;
     gap: var(--space-xs);
   }
 
-  .mock-day {
-    aspect-ratio: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: background-color 0.2s, color 0.2s;
-  }
-
-  .mock-day:hover {
-    background-color: rgba(30, 58, 138, 0.1);
-  }
-
-  .mock-day.is-selected {
-    background-color: var(--color-primary);
-    color: var(--color-surface);
-  }
-
-  .booking-cta {
-    display: block;
-    width: 100%;
-    padding: 1rem;
-    background-color: var(--color-secondary);
-    color: var(--color-primary);
-    text-align: center;
-    border-radius: var(--radius-pill);
+  .form-group label {
     font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--color-primary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    transition: transform 0.3s var(--ease-out);
   }
 
-  .booking-cta:hover {
-    transform: scale(1.05);
+  .form-group input,
+  .form-group select {
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    background-color: var(--color-bg);
+    transition: border-color 0.3s, box-shadow 0.3s;
+    width: 100%;
+  }
+
+  .form-group input:focus,
+  .form-group select:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(30, 58, 138, 0.1);
+  }
+
+  .radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.5rem;
+  }
+
+  .radio-group label {
+    font-weight: 400;
+    font-size: 1rem;
+    text-transform: none;
+    letter-spacing: normal;
+    color: var(--color-text);
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    cursor: pointer;
+  }
+
+  .radio-group input[type="radio"] {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    accent-color: var(--color-primary);
+  }
+
+  .form-status {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .form-status.is-loading {
+    color: var(--color-primary);
+  }
+
+  .form-status.is-success {
+    color: #15803d;
+    background-color: #dcfce7;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .form-status.is-error {
+    color: #b91c1c;
+    background-color: #fee2e2;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector<HTMLFormElement>('.elementor-ajax-form');
+    const iframe = document.getElementById('appointment_hidden_iframe') as HTMLIFrameElement;
+    if (!form) return;
+
+    let isSubmitting = false;
+
+    form.addEventListener('submit', () => {
+      isSubmitting = true;
+      const statusEl = form.querySelector<HTMLElement>('.form-status');
+      const submitBtn = form.querySelector<HTMLElement>('.magnetic-btn');
+
+      if (statusEl) {
+        statusEl.textContent = 'Submitting your free trial request...';
+        statusEl.className = 'form-status is-loading';
+      }
+      if (submitBtn) {
+        submitBtn.style.pointerEvents = 'none';
+        submitBtn.style.opacity = '0.7';
+      }
+    });
+
+    if (iframe) {
+      iframe.addEventListener('load', () => {
+        if (!isSubmitting) return;
+        isSubmitting = false;
+
+        const statusEl = form.querySelector<HTMLElement>('.form-status');
+        const submitBtn = form.querySelector<HTMLElement>('.magnetic-btn');
+
+        if (statusEl) {
+          statusEl.textContent = 'Thank you! Your free trial session request has been submitted successfully.';
+          statusEl.className = 'form-status is-success';
+        }
+        if (submitBtn) {
+          submitBtn.style.pointerEvents = '';
+          submitBtn.style.opacity = '';
+        }
+
+        form.reset();
+      });
+    }
+  });
+</script>

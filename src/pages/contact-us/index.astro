@@ -33,72 +33,80 @@ import PageHeader from '../../components/ui/PageHeader.astro';
         </div>
 
         <div class="contact-form-wrapper reveal-fade-up" style="transition-delay: 0.2s;">
-          <form class="contact-form" action="https://formsubmit.co/venturechessacademy@gmail.com" method="POST">
-            <!-- FormSubmit Configuration -->
-            <input type="hidden" name="_cc" value="enquires.wrnxt@gmail.com" />
-            <input type="hidden" name="_subject" value="New Contact Form Submission - Venture Chess Academy" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="text" name="_honey" style="display:none" />
+          <!-- Hidden iframe to handle cross-origin submission without page navigation -->
+          <iframe name="contact_hidden_iframe" id="contact_hidden_iframe" style="display: none;" tabindex="-1" aria-hidden="true"></iframe>
+
+          <form class="contact-form elementor-ajax-form" action="https://venturechessacademy.com/wp-admin/admin-ajax.php" method="POST" target="contact_hidden_iframe">
+            <input type="hidden" name="action" value="elementor_pro_forms_send_form" />
+            <input type="hidden" name="post_id" value="205" />
+            <input type="hidden" name="form_id" value="dfe28c1" />
+            <input type="hidden" name="referer_title" value="Contact Chess Academy | get in touch" />
+            <input type="hidden" name="queried_id" value="205" />
 
             <div class="form-group">
               <label for="name">Name</label>
-              <input type="text" id="name" name="name" required placeholder="Name" />
+              <input type="text" id="name" name="form_fields[name]" required placeholder="Name" />
             </div>
             
             <div class="form-group">
               <label for="email">Email</label>
-              <input type="email" id="email" name="email" required placeholder="Email" />
+              <input type="email" id="email" name="form_fields[email]" required placeholder="Email" />
             </div>
 
             <div class="form-group">
               <label for="phone">Phone</label>
-              <input type="tel" id="phone" name="phone" required placeholder="+91" />
+              <input type="tel" id="phone" name="form_fields[message]" required placeholder="+91" />
             </div>
 
             <div class="form-group">
               <label for="kidsName">Kids Name</label>
-              <input type="text" id="kidsName" name="kidsName" required placeholder="Kids Name" />
+              <input type="text" id="kidsName" name="form_fields[field_a4dec15]" required placeholder="Kids Name" />
             </div>
 
             <div class="form-group">
               <label for="kidsAge">Kids Age</label>
-              <input type="number" id="kidsAge" name="kidsAge" required placeholder="Kids Age" />
+              <input type="number" id="kidsAge" name="form_fields[field_31f6737]" required placeholder="Kids Age" />
             </div>
 
             <div class="form-group">
               <label for="country">Country</label>
-              <select id="country" name="country" required>
+              <select id="country" name="form_fields[field_0a2b6ff]" required>
                 <option value="" disabled selected>Select Country Name</option>
                 <option value="India">India</option>
-                <option value="USA">USA</option>
-                <option value="UK">UK</option>
-                <option value="UAE">UAE</option>
+                <option value="United States">United States</option>
+                <option value="United Kingdom">United Kingdom</option>
+                <option value="United Arab Emirates">United Arab Emirates</option>
+                <option value="Australia">Australia</option>
+                <option value="Canada">Canada</option>
+                <option value="Singapore">Singapore</option>
+                <option value="Germany">Germany</option>
+                <option value="New Zealand">New Zealand</option>
                 <option value="Other">Other</option>
               </select>
             </div>
 
             <div class="form-group">
               <label for="city">City</label>
-              <input type="text" id="city" name="city" required placeholder="City" />
+              <input type="text" id="city" name="form_fields[field_392c1d6]" required placeholder="City" />
             </div>
 
             <div class="form-group">
               <label for="fideProfile">Share FIDE Profile</label>
-              <input type="text" id="fideProfile" name="fideProfile" placeholder="Share FIDE Profile" />
+              <input type="text" id="fideProfile" name="form_fields[field_03d32dc]" placeholder="Share FIDE Profile" />
             </div>
 
             <div class="form-group">
               <label>Kids Prior Experience</label>
               <div class="radio-group">
-                <label><input type="radio" name="experience" value="New to Chess" required /> New to Chess</label>
-                <label><input type="radio" name="experience" value="Taken Class / Plays Well" /> Taken Class / Plays Well</label>
-                <label><input type="radio" name="experience" value="Played Tournaments" /> Played Tournaments</label>
-                <label><input type="radio" name="experience" value="Other" /> Other</label>
+                <label><input type="radio" name="form_fields[field_09177c7]" value="New to Chess" required /> New to Chess</label>
+                <label><input type="radio" name="form_fields[field_09177c7]" value="Taken Class / Plays Well" /> Taken Class / Plays Well</label>
+                <label><input type="radio" name="form_fields[field_09177c7]" value="Played Tournaments " /> Played Tournaments</label>
+                <label><input type="radio" name="form_fields[field_09177c7]" value="Other" /> Other</label>
               </div>
             </div>
 
             <MagneticButton text="Submit" variant="primary" />
+            <div class="form-status" aria-live="polite"></div>
           </form>
         </div>
       </div>
@@ -248,6 +256,31 @@ import PageHeader from '../../components/ui/PageHeader.astro';
     accent-color: var(--color-primary);
   }
 
+  .form-status {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    text-align: center;
+  }
+
+  .form-status.is-loading {
+    color: var(--color-primary);
+  }
+
+  .form-status.is-success {
+    color: #15803d;
+    background-color: #dcfce7;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+  }
+
+  .form-status.is-error {
+    color: #b91c1c;
+    background-color: #fee2e2;
+    padding: 0.75rem 1rem;
+    border-radius: var(--radius-md);
+  }
+
   /* Mobile/Tablet overrides strictly requested by user */
   @media (max-width: 767px) {
     .contact-info, .contact-form-wrapper {
@@ -308,3 +341,49 @@ import PageHeader from '../../components/ui/PageHeader.astro';
     }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const form = document.querySelector<HTMLFormElement>('.elementor-ajax-form');
+    const iframe = document.getElementById('contact_hidden_iframe') as HTMLIFrameElement;
+    if (!form) return;
+
+    let isSubmitting = false;
+
+    form.addEventListener('submit', () => {
+      isSubmitting = true;
+      const statusEl = form.querySelector<HTMLElement>('.form-status');
+      const submitBtn = form.querySelector<HTMLElement>('.magnetic-btn');
+
+      if (statusEl) {
+        statusEl.textContent = 'Submitting your message...';
+        statusEl.className = 'form-status is-loading';
+      }
+      if (submitBtn) {
+        submitBtn.style.pointerEvents = 'none';
+        submitBtn.style.opacity = '0.7';
+      }
+    });
+
+    if (iframe) {
+      iframe.addEventListener('load', () => {
+        if (!isSubmitting) return;
+        isSubmitting = false;
+
+        const statusEl = form.querySelector<HTMLElement>('.form-status');
+        const submitBtn = form.querySelector<HTMLElement>('.magnetic-btn');
+
+        if (statusEl) {
+          statusEl.textContent = 'Thank you! Your submission was successful.';
+          statusEl.className = 'form-status is-success';
+        }
+        if (submitBtn) {
+          submitBtn.style.pointerEvents = '';
+          submitBtn.style.opacity = '';
+        }
+
+        form.reset();
+      });
+    }
+  });
+</script>
