@@ -1,0 +1,1 @@
+fetch('https://venturechessacademy.com/wp-json/wp/v2/posts?_embed&per_page=10').then(r=>r.json()).then(d=>{for(let p of d){if(p.content.rendered.includes('FAQ')){console.log(p.content.rendered.substring(p.content.rendered.indexOf('FAQ')-100, p.content.rendered.indexOf('FAQ')+1500));break;}}});
