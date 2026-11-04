@@ -6,11 +6,11 @@ let pageContent = '';
 let pageTitle = 'Cancellation & Refund Policy';
 
 try {
-  const response = await fetch('https://venturechessacademy.com/wp-json/wp/v2/pages?slug=cancellations-refund');
+  const response = await fetch('https://dashboard.venturechessacademy.com/wp-json/wp/v2/pages?slug=cancellations-refund');
   if (response.ok) {
     const pages = await response.json();
     if (pages && pages.length > 0) {
-      pageContent = pages[0].content.rendered;
+      pageContent = pages[0].content.rendered.replaceAll('https://venturechessacademy.com/wp-content/uploads/', 'https://dashboard.venturechessacademy.com/wp-content/uploads/');
       pageTitle = pages[0].title.rendered;
     } else {
       pageContent = '<p>Cancellation & refund policy content is not available.</p>';

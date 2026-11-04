@@ -36,7 +36,7 @@ import PageHeader from '../../components/ui/PageHeader.astro';
           <!-- Hidden iframe to handle cross-origin submission without page navigation -->
           <iframe name="contact_hidden_iframe" id="contact_hidden_iframe" style="display: none;" tabindex="-1" aria-hidden="true"></iframe>
 
-          <form class="contact-form elementor-ajax-form" action="https://venturechessacademy.com/wp-admin/admin-ajax.php" method="POST" target="contact_hidden_iframe">
+          <form class="contact-form elementor-ajax-form" action="https://dashboard.venturechessacademy.com/wp-admin/admin-ajax.php" method="POST" target="contact_hidden_iframe">
             <input type="hidden" name="action" value="elementor_pro_forms_send_form" />
             <input type="hidden" name="post_id" value="205" />
             <input type="hidden" name="form_id" value="dfe28c1" />
