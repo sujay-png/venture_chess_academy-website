@@ -11,6 +11,7 @@ export interface Props {
   title?: string;
   description?: string;
   keywords?: string;
+  focusKeyword?: string;
   ogImage?: string;
   ogType?: string;
   canonicalUrl?: string;
@@ -23,7 +24,7 @@ const pageSeo = getSeoForPath(pathname);
 
 const title = Astro.props.forceTitle || pageSeo?.title || Astro.props.title || defaultSeo.title;
 const description = Astro.props.forceDescription || pageSeo?.description || Astro.props.description || defaultSeo.description;
-const keywords = pageSeo?.keywords || Astro.props.keywords || defaultSeo.keywords;
+const keywords = pageSeo?.keywords || Astro.props.keywords || Astro.props.focusKeyword || defaultSeo.keywords;
 const ogImage = pageSeo?.ogImage || Astro.props.ogImage || defaultSeo.ogImage;
 const ogType = pageSeo?.ogType || Astro.props.ogType || defaultSeo.ogType;
 const canonicalUrl = pageSeo?.canonicalUrl || Astro.props.canonicalUrl || new URL(pathname, Astro.site || 'https://venturechessacademy.com').href;
