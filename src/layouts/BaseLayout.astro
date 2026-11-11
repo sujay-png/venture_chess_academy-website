@@ -34,7 +34,7 @@ const schemaOrg = {
   "name": "Venture Chess Academy",
   "alternateName": "VCA",
   "url": "https://venturechessacademy.com",
-  "logo": "https://venturechessacademy.com/wp-content/uploads/2025/04/Venture-Chess-Academy.png",
+  "logo": "https://venturechessacademy.com/images/logo.png",
   "image": ogImage,
   "description": description,
   "telephone": "+919567027370",
@@ -55,9 +55,11 @@ const schemaOrg = {
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/png" href="/images/logo/cropped-Venture-Chess-Academy-32x32.png" />
+    <link rel="icon" type="image/png" href="/images/logo.png" />
+    <link rel="apple-touch-icon" href="/images/logo.png" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {keywords && <meta name="keywords" content={keywords} />}
     <link rel="canonical" href={canonicalUrl} />
     
     <!-- Open Graph / Facebook -->

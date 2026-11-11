@@ -65,9 +65,9 @@ p {
 .subtitle {
   font-family: var(--font-body);
   font-size: var(--font-size-eyebrow);
-  font-weight: 600;
+  font-weight: 700;
   letter-spacing: 0.1em;
-  color: var(--color-secondary);
+  color: #B65617; /* Brand burnt orange - high contrast & matches theme */
   text-transform: uppercase;
   margin-bottom: var(--space-xs);
   display: block;
