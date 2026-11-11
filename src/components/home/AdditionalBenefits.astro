@@ -10,76 +10,60 @@ import MagneticButton from '../ui/MagneticButton.astro';
       <h2 class="title">In every chess position,<br/>there are opportunities</h2>
     </div>
 
-    <div class="benefits-track-container reveal-fade-up" style="transition-delay: 0.2s;">
-      <div class="slider-wrapper" style="position: relative; width: 100%;">
-        <button class="benefit-slider-btn benefit-prev-btn" aria-label="Previous benefit" disabled style="position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        </button>
-
-        <div class="benefits-grid" id="benefitsTrack" style="display: flex; flex-direction: row; flex-wrap: nowrap; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
-          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
-            <div class="benefit-bg" style="background-image: url('https://dashboard.venturechessacademy.com/wp-content/uploads/2026/02/school-boys-playing-chess-e1698161918720.jpg');"></div>
-            <div class="benefit-overlay"></div>
-            <div class="benefit-content">
-              <h3 class="benefit-title">Flexible Weekly Schedule</h3>
-              <a href="/contact-us/" class="benefit-link">Learn More</a>
-            </div>
-          </div>
-
-          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
-            <div class="benefit-bg" style="background-image: url('https://dashboard.venturechessacademy.com/wp-content/uploads/2026/02/selective-focus-of-wooden-chess-board-with-seniors-playing-chess-at-home-e1697916079176.jpg');"></div>
-            <div class="benefit-overlay"></div>
-            <div class="benefit-content">
-              <h3 class="benefit-title">Weekly Tournaments</h3>
-              <a href="/contact-us/" class="benefit-link">Learn More</a>
-            </div>
-          </div>
-
-          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
-            <div class="benefit-bg" style="background-image: url('https://dashboard.venturechessacademy.com/wp-content/uploads/2026/02/smart-boy-playing-chess-and-staring-at-the-chessboard-e1698161801842.jpg');"></div>
-            <div class="benefit-overlay"></div>
-            <div class="benefit-content">
-              <h3 class="benefit-title">Weekly Puzzle Quest</h3>
-              <a href="/contact-us/" class="benefit-link">Learn More</a>
-            </div>
-          </div>
-
-          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
-            <div class="benefit-bg" style="background-image: url('https://dashboard.venturechessacademy.com/wp-content/uploads/2026/02/game-of-chess-e1698161986705.jpg');"></div>
-            <div class="benefit-overlay"></div>
-            <div class="benefit-content">
-              <h3 class="benefit-title">Custom Position Drills</h3>
-              <a href="/contact-us/" class="benefit-link">Learn More</a>
-            </div>
-          </div>
-
-          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
-            <div class="benefit-bg" style="background-image: url('https://dashboard.venturechessacademy.com/wp-content/uploads/2026/01/one-to-one-class.webp');"></div>
-            <div class="benefit-overlay"></div>
-            <div class="benefit-content">
-              <h3 class="benefit-title">Assignments</h3>
-              <a href="/contact-us/" class="benefit-link">Learn More</a>
-            </div>
-          </div>
-
-          <div class="benefit-card" style="flex: 0 0 100%; min-width: 100%; max-width: 100%; scroll-snap-align: start; box-sizing: border-box;">
-            <div class="benefit-bg" style="background-image: url('https://dashboard.venturechessacademy.com/wp-content/uploads/2026/02/teenager-playing-chess.jpg');"></div>
-            <div class="benefit-overlay"></div>
-            <div class="benefit-content">
-              <h3 class="benefit-title">Video Courses</h3>
-              <a href="/contact-us/" class="benefit-link">Learn More</a>
-            </div>
-          </div>
+    <div class="benefits-grid">
+      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.1s;">
+        <div class="benefit-bg" style="background-image: url('/images/benefits/flexible-schedule.jpg');"></div>
+        <div class="benefit-overlay"></div>
+        <div class="benefit-content">
+          <h3 class="benefit-title">Flexible Weekly Schedule</h3>
+          <a href="/contact-us/" class="benefit-link">Learn More</a>
         </div>
-
-        <button class="benefit-slider-btn benefit-next-btn" aria-label="Next benefit" style="position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
       </div>
-    </div>
 
-    <div class="benefits-cta-row reveal-fade-up" style="display: flex; justify-content: center; align-items: center; width: 100%; margin-top: 36px; text-align: center; transition-delay: 0.25s;">
-      <MagneticButton href="/contact-us/" text="Talk to a Coach" variant="primary" className="benefits-cta-btn" />
+      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.2s;">
+        <div class="benefit-bg" style="background-image: url('/images/benefits/weekly-tournaments.jpg');"></div>
+        <div class="benefit-overlay"></div>
+        <div class="benefit-content">
+          <h3 class="benefit-title">Weekly Tournaments</h3>
+          <a href="/contact-us/" class="benefit-link">Learn More</a>
+        </div>
+      </div>
+
+      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.3s;">
+        <div class="benefit-bg" style="background-image: url('/images/benefits/weekly-puzzle-quest.jpg');"></div>
+        <div class="benefit-overlay"></div>
+        <div class="benefit-content">
+          <h3 class="benefit-title">Weekly Puzzle Quest</h3>
+          <a href="/contact-us/" class="benefit-link">Learn More</a>
+        </div>
+      </div>
+
+      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.4s;">
+        <div class="benefit-bg" style="background-image: url('/images/benefits/custom-position-drills.jpg');"></div>
+        <div class="benefit-overlay"></div>
+        <div class="benefit-content">
+          <h3 class="benefit-title">Custom Position Drills</h3>
+          <a href="/contact-us/" class="benefit-link">Learn More</a>
+        </div>
+      </div>
+
+      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.5s;">
+        <div class="benefit-bg" style="background-image: url('/images/benefits/assignments.webp');"></div>
+        <div class="benefit-overlay"></div>
+        <div class="benefit-content">
+          <h3 class="benefit-title">Assignments</h3>
+          <a href="/contact-us/" class="benefit-link">Learn More</a>
+        </div>
+      </div>
+
+      <div class="benefit-card reveal-fade-up" style="transition-delay: 0.6s;">
+        <div class="benefit-bg" style="background-image: url('/images/benefits/video-courses.jpg');"></div>
+        <div class="benefit-overlay"></div>
+        <div class="benefit-content">
+          <h3 class="benefit-title">Video Courses</h3>
+          <a href="/contact-us/" class="benefit-link">Learn More</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>

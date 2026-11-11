@@ -83,8 +83,8 @@ import MagneticButton from '../ui/MagneticButton.astro';
   .service-number {
     font-family: var(--font-display);
     font-size: 1.5rem;
-    font-weight: 600;
-    color: var(--color-secondary);
+    font-weight: 700;
+    color: #B65617; /* Brand burnt orange - high contrast & matches theme */
   }
 
   .service-title {
@@ -238,16 +238,17 @@ import MagneticButton from '../ui/MagneticButton.astro';
       display: contents; 
     }
 
-    /* Make the "What we offer" subtitle brand yellow */
+    /* Keep subtitle consistent in brand burnt orange */
     .services-section .subtitle {
-      color: var(--color-secondary);
+      color: #B65617;
     }
 
     .service-number {
       grid-column: 1;
       grid-row: 1;
       font-size: 1rem; /* Small */
-      color: var(--color-secondary); /* Brand yellow */
+      font-weight: 700;
+      color: #B65617; /* Brand burnt orange */
       padding-top: 3px; /* Visual alignment with title */
     }
 
