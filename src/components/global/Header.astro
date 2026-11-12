@@ -30,12 +30,20 @@ const checkActive = (href: string) => {
 <header class="header reveal-fade-up">
   <div class="header-container">
     <a href="/" class="logo-link">
-      <img
-        src="/images/logo.png"
-        alt="Venture Chess Academy"
-        class="logo-image"
-      />
-      <span class="logo-text">Venture Chess Academy</span>
+      <picture class="logo-picture">
+        <source
+          type="image/webp"
+          srcset="/images/logo-112.webp 112w, /images/logo-224.webp 224w"
+          sizes="50px"
+        />
+        <img
+          src="/images/logo.png"
+          alt="Venture Chess Academy"
+          class="logo-image"
+          width="50"
+          height="50"
+        />
+      </picture>
     </a>
 
     <nav class="desktop-nav">
@@ -138,7 +146,7 @@ const checkActive = (href: string) => {
     max-width: 1200px;
     width: 95%;
     margin: 0 auto;
-    padding: 0.75rem 1rem;
+    padding: 0.75rem 1.25rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -149,13 +157,6 @@ const checkActive = (href: string) => {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     border: 1px solid rgba(0, 0, 0, 0.03);
     transition: all 0.3s var(--ease-out);
-    position: relative;
-  }
-
-  @media (min-width: 641px) {
-    .header-container {
-      padding: 0.75rem 1.25rem;
-    }
   }
 
   .header.is-scrolled .header-container {
@@ -167,39 +168,22 @@ const checkActive = (href: string) => {
   .logo-link {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
     width: auto;
     position: relative;
     z-index: 101;
     flex-shrink: 0;
   }
 
+  .logo-picture {
+    display: flex;
+    align-items: center;
+  }
+
   .logo-image {
-    height: 44px;
+    height: 48px;
     width: auto;
     object-fit: contain;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-  }
-
-  .logo-text {
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: clamp(0.8125rem, 3.5vw, 1.125rem);
-    line-height: 1.2;
-    color: var(--color-primary);
-    letter-spacing: -0.01em;
-    white-space: nowrap;
-    transition: color 0.2s var(--ease-out);
-  }
-
-  @media (min-width: 641px) {
-    .logo-link {
-      gap: 0.75rem;
-    }
-    .logo-image {
-      height: 48px;
-    }
   }
 
   @media (hover: hover) {
@@ -207,39 +191,10 @@ const checkActive = (href: string) => {
     .logo-link:focus-visible .logo-image {
       transform: rotate(12deg) scale(1.08);
     }
-
-    .logo-link:hover .logo-text {
-      color: var(--color-secondary);
-    }
   }
 
   .logo-link:focus-visible .logo-image {
     transform: rotate(12deg) scale(1.08);
-  }
-
-  @media (max-width: 1023px) {
-    .logo-link {
-      position: static;
-    }
-
-    .logo-text {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      max-width: calc(100% - 130px);
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      pointer-events: auto;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .logo-text {
-      display: none;
-    }
   }
 
   .desktop-nav {
@@ -438,8 +393,7 @@ const checkActive = (href: string) => {
       transition: none !important;
     }
 
-    .logo-image,
-    .logo-text {
+    .logo-image {
       transition: none !important;
     }
 
