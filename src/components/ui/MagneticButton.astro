@@ -76,10 +76,16 @@ const Tag = href ? 'a' : 'button';
     background-color: var(--color-primary);
     transform: translateY(101%); /* Hidden initially */
   }
-  .btn-outline:hover {
+  .btn-outline:hover,
+  .btn-outline:focus-visible {
     color: var(--color-surface);
   }
-  .btn-outline:hover .btn-bg {
+  .btn-outline:hover .btn-text,
+  .btn-outline:focus-visible .btn-text {
+    color: var(--color-surface);
+  }
+  .btn-outline:hover .btn-bg,
+  .btn-outline:focus-visible .btn-bg {
     transform: translateY(0);
   }
 
@@ -127,9 +133,10 @@ const Tag = href ? 'a' : 'button';
       });
 
       btn.addEventListener('mouseleave', () => {
-        btn.style.transform = `translate(0px, 0px)`;
-        if(text) text.style.transform = `translate(0px, 0px)`;
-        if(bg) bg.style.transform = `scale(1) translate(0px, 0px)`;
+        // Clear inline transforms so CSS hover/idle states (e.g. .btn-outline translateY(101%)) regain control
+        btn.style.transform = '';
+        if(text) text.style.transform = '';
+        if(bg) bg.style.transform = '';
       });
     });
   });

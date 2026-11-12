@@ -10,7 +10,22 @@ import MagneticButton from '../ui/MagneticButton.astro';
       <!-- Left Column (Image & Floating Stat) -->
       <div class="image-col reveal-fade-up">
         <div class="image-wrapper">
-          <img src="/images/home/why-venture.png" alt="Live chess coaching on laptop and mobile" class="main-image" />
+          <picture class="main-image-picture">
+            <source
+              type="image/webp"
+              srcset="/images/home/why-venture-400.webp 400w, /images/home/why-venture-760.webp 760w"
+              sizes="(max-width: 639px) calc(100vw - 32px), (max-width: 1023px) 720px, 560px"
+            />
+            <img
+              src="/images/home/why-venture.png"
+              alt="Live chess coaching on laptop and mobile"
+              class="main-image"
+              width="560"
+              height="560"
+              loading="lazy"
+              decoding="async"
+            />
+          </picture>
           
           <div class="floating-stat">
             <div class="stat-icon"></div>
@@ -97,6 +112,11 @@ import MagneticButton from '../ui/MagneticButton.astro';
   .image-wrapper {
     position: relative;
     border-radius: var(--radius-xl);
+  }
+
+  .main-image-picture {
+    display: block;
+    width: 100%;
   }
 
   .main-image {
@@ -253,5 +273,10 @@ import MagneticButton from '../ui/MagneticButton.astro';
   .action-wrapper :global(a),
   .action-wrapper :global(.btn-bg) {
     border-radius: 8px !important;
+  }
+
+  .action-wrapper :global(.magnetic-btn),
+  .action-wrapper :global(.magnetic-btn:hover) {
+    color: #ffffff !important;
   }
 </style>

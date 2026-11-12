@@ -30,11 +30,20 @@ const checkActive = (href: string) => {
 <header class="header reveal-fade-up">
   <div class="header-container">
     <a href="/" class="logo-link">
-      <img
-        src="/images/logo.png"
-        alt="Venture Chess Academy"
-        class="logo-image"
-      />
+      <picture class="logo-picture">
+        <source
+          type="image/webp"
+          srcset="/images/logo-112.webp 112w, /images/logo-224.webp 224w"
+          sizes="50px"
+        />
+        <img
+          src="/images/logo.png"
+          alt="Venture Chess Academy"
+          class="logo-image"
+          width="50"
+          height="50"
+        />
+      </picture>
     </a>
 
     <nav class="desktop-nav">
@@ -163,6 +172,11 @@ const checkActive = (href: string) => {
     position: relative;
     z-index: 101;
     flex-shrink: 0;
+  }
+
+  .logo-picture {
+    display: flex;
+    align-items: center;
   }
 
   .logo-image {

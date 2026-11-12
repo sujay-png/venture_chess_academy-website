@@ -4,6 +4,12 @@ import MagneticButton from '../ui/MagneticButton.astro';
 
 // Just take a few for the homepage
 const featuredResults = achievements.slice(0, 6);
+
+const getAchievementWebpSrcset = (imagePath: string) => {
+  const dotIndex = imagePath.lastIndexOf('.');
+  const base = dotIndex !== -1 ? imagePath.slice(0, dotIndex) : imagePath;
+  return `${base}-380.webp 380w, ${base}-720.webp 720w`;
+};
 ---
 
 <section class="section results-section">
@@ -28,7 +34,21 @@ const featuredResults = achievements.slice(0, 6);
         {featuredResults.map((result) => (
           <div class="result-card hover-lift">
             <div class="result-image" data-cursor-text="VIEW">
-              <img src={result.image} alt={result.name} loading="lazy" />
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset={getAchievementWebpSrcset(result.image)}
+                  sizes="(max-width: 767px) calc(100vw - 64px), (max-width: 1023px) 45vw, 360px"
+                />
+                <img
+                  src={result.image}
+                  alt={result.name}
+                  width="380"
+                  height="380"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="result-content">
               <h3 class="student-name">{result.name}</h3>
@@ -250,6 +270,12 @@ const featuredResults = achievements.slice(0, 6);
     border-radius: var(--radius-lg);
     overflow: hidden;
     margin-bottom: var(--space-sm);
+  }
+
+  .result-image picture {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
 
   .result-image img {

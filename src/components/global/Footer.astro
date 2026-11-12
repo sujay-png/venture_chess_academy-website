@@ -24,11 +24,21 @@ const legalLinks = [
       <!-- Brand Column -->
       <div class="footer-col brand-col reveal-fade-up">
         <a href="/" class="footer-logo">
-          <img
-            src="/images/logo.png"
-            alt="Venture Chess Academy"
-            class="logo-img"
-          />
+          <picture class="footer-logo-picture">
+            <source
+              type="image/webp"
+              srcset="/images/logo-112.webp 112w, /images/logo-224.webp 224w"
+              sizes="(max-width: 639px) 60px, 110px"
+            />
+            <img
+              src="/images/logo.png"
+              alt="Venture Chess Academy"
+              class="logo-img"
+              width="110"
+              height="110"
+              loading="lazy"
+            />
+          </picture>
         </a>
         <p class="brand-tagline">
           Creating a winning mentality, giving birth to a tough generation. Let
@@ -259,6 +269,11 @@ const legalLinks = [
     max-width: 320px;
     text-align: center;
     margin-bottom: 1rem;
+  }
+
+  .footer-logo-picture {
+    display: inline-block;
+    max-width: 100%;
   }
 
   .logo-img {
